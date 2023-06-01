@@ -163,7 +163,7 @@ class DMCWrapper(core.Env):
 
     def reset(self, colour=None):
         time_step = self._env.reset()
-        if colour:
+        if colour is not None:
             self._env.physics.model.mat_rgba[:, :3] = colour
         self.current_state = _flatten_obs(time_step.observation)
         obs = self._get_obs(time_step)
